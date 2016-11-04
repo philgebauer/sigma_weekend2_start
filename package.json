@@ -1,13 +1,13 @@
 {
-  "name": "omicron_weekend_2",
+  "name": "sigma_weekend_2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/app.js"
   },
-  "author": "Omicron Cohort",
+  "author": "Sigma Cohort",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.6",
