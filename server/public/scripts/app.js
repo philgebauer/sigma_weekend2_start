@@ -2,17 +2,17 @@ $(document).ready(function(){
   $("#buttons").on("click", getData);
   // getData();
 
-
-
-
 var currentSlide = 0;
+
+addBottom();
+
 
   function getData() {
     $.ajax({
       type: 'GET',
       url: '/data', // http://localhost:5000/data
       beforeSend: function() {
-        console.log("hey, i'm about to make a request");
+          console.log('hellooo');
       },
       success: function(data) {
         updateDom(data.sigmanauts);
@@ -26,25 +26,25 @@ var currentSlide = 0;
 $("#buttons").on("click", '#rightClick', addCurrentSlide);
 $("#buttons").on("click", '#leftClick',  subCurrentSlide);
 
-addBottom();
+
 
 function addCurrentSlide () {
-  currentSlide++
+  currentSlide++;
+  if (currentSlide == 19) {
+    currentSlide = 1;
+  }
 
   console.log(currentSlide);
 }
 
 function subCurrentSlide () {
-  currentSlide--
-
+  currentSlide--;
+  if (currentSlide == 0) {
+    currentSlide = 18;
+    $(this).fadeIn();
+  }
   console.log(currentSlide);
 }
-
-// function timer () {
-//   setInterval(addCurrentSlide, 150);
-//   updateDom();
-// }
-
 
 
 function updateDom(sigmanauts) {
@@ -54,7 +54,7 @@ function updateDom(sigmanauts) {
     person.id = i;
     if (currentSlide == person.id) {
     squarecolor();
-    // $('#' + currentSlide).css('background-color', 'red');
+
     $("#person-container").empty();
     $("#person-container").append('<div class="person"></div>');
     var $el = $("#person-container").children().last();
@@ -68,15 +68,16 @@ function updateDom(sigmanauts) {
   });
  }
 
- function addBottom () {
-   for (var i = 1; i < 20; i++ ) {
-     $('#carousel').append('<div id="' + i + '" class="boxes"> </div>').children();
-   };
- }
+function addBottom () {
+ for (var i = 1; i < 20; i++ ) {
+   $('#carousel').append('<div id="' + i + '" class="boxes"> </div>').children();
+ };
+}
 
 function squarecolor () {
   $('.boxes').css('background-color', 'white');
   $('#' + currentSlide).css('background-color', 'red');
 }
+
 
 });
