@@ -3,6 +3,8 @@ $(document).ready(function(){
   // getData();
 
 
+
+
 var currentSlide = 0;
 
   function getData() {
@@ -21,28 +23,37 @@ var currentSlide = 0;
     });
   }
 
-
 $("#buttons").on("click", '#rightClick', addCurrentSlide);
 $("#buttons").on("click", '#leftClick',  subCurrentSlide);
 
+addBottom();
+
 function addCurrentSlide () {
   currentSlide++
+
   console.log(currentSlide);
 }
 
 function subCurrentSlide () {
   currentSlide--
+
   console.log(currentSlide);
 }
+
+// function timer () {
+//   setInterval(addCurrentSlide, 150);
+//   updateDom();
+// }
 
 
 
 function updateDom(sigmanauts) {
 
   $.each(sigmanauts, function(i, person) {
-    console.log("index number: ", i);
+    // console.log("index number: ", i);
     person.id = i;
     if (currentSlide == person.id) {
+    $("#person-container").empty();
     $("#person-container").append('<div class="person"></div>');
     var $el = $("#person-container").children().last();
 
@@ -52,6 +63,12 @@ function updateDom(sigmanauts) {
 
     }
   });
+ }
+
+ function addBottom () {
+   for (var i = 1; i < 20; i++ ) {
+     $('#carousel').append('<div id="' + i + '" class="boxes"> </div>').children();
+   };
  }
 
 
