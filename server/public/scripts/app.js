@@ -50,9 +50,11 @@ function subCurrentSlide () {
 function updateDom(sigmanauts) {
 
   $.each(sigmanauts, function(i, person) {
-    // console.log("index number: ", i);
+
     person.id = i;
     if (currentSlide == person.id) {
+    squarecolor();
+    // $('#' + currentSlide).css('background-color', 'red');
     $("#person-container").empty();
     $("#person-container").append('<div class="person"></div>');
     var $el = $("#person-container").children().last();
@@ -62,6 +64,7 @@ function updateDom(sigmanauts) {
     $el.append('<p>' + this.shoutout + '</p>');
 
     }
+
   });
  }
 
@@ -71,5 +74,9 @@ function updateDom(sigmanauts) {
    };
  }
 
+function squarecolor () {
+  $('.boxes').css('background-color', 'white');
+  $('#' + currentSlide).css('background-color', 'red');
+}
 
 });

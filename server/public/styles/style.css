@@ -15,6 +15,12 @@ h1 {
   margin-bottom: 20%;
 }
 
+#carousel {
+  margin: 0 auto;
+  width: 342px;
+  height: 18px;
+}
+
 .boxes {
   height: 12px;
   width: 12px;
