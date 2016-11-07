@@ -5,6 +5,10 @@ $(document).ready(function() {
     var currentSlide = 0;
     addBottom();
 
+    function timer(){
+    currentSlide++;
+    setTimeout(getData, 10000);
+}
 
     function getData() {
         $.ajax({
@@ -15,6 +19,7 @@ $(document).ready(function() {
             },
             success: function(data) {
                 updateDom(data.sigmanauts);
+                timer();
             },
             error: function(xhr) {
                 console.log('request failed');
