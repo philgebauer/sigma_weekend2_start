@@ -5,11 +5,6 @@ $(document).ready(function() {
     var currentSlide = 0;
     addBottom();
 
-    function timer(){
-    currentSlide++;
-    setTimeout(getData, 10000);
-}
-
     function getData() {
         $.ajax({
             type: 'GET',
@@ -20,6 +15,8 @@ $(document).ready(function() {
             success: function(data) {
                 updateDom(data.sigmanauts);
                 timer();
+
+
             },
             error: function(xhr) {
                 console.log('request failed');
@@ -27,14 +24,10 @@ $(document).ready(function() {
         });
     }
 
-
-    //right and left buttons. Each add to the current slide count
     $("#buttons").on("click", '#rightClick', addCurrentSlide);
     $("#buttons").on("click", '#leftClick', subCurrentSlide);
 
-
-
-    //adds to current slide and checks if it is higher than 19, or less that 1
+    // adds to current slide and checks if it is higher than 19, or less that 1
     function addCurrentSlide() {
         currentSlide++;
         if (currentSlide == 19) {
@@ -72,14 +65,14 @@ $(document).ready(function() {
                 $el.append('<p>' + this.shoutout + '</p>');
 
 
-              }
+            }
 
         });
     }
 
     //adds a unique ID to bottom bar squares.
     function addBottom() {
-        for (var i = 1; i < 20; i++) {
+        for (var i = 0; i < 19; i++) {
             $('#carousel').append('<div id="' + i + '" class="boxes"> </div>').children();
         };
     }
@@ -89,6 +82,7 @@ $(document).ready(function() {
         $('.boxes').css('background-color', 'white');
         $('#' + currentSlide).css('background-color', 'red');
     }
+
 
 
 
